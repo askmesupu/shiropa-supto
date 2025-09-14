@@ -7,113 +7,64 @@
 body, html, #root {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(45deg, #ff6b6b, #f06595, #d4a5a5);
+  background-size: 600% 600%;
+  animation: gradientAnimation 15s ease infinite;
 }
 
-.App {
-  text-align: center;
-  min-height: 100vh;
-  background: url("https://i.imgur.com/8sdznQ1.jpeg") no-repeat center center fixed;
-  background-size: cover;
-  transition: background-color 2s;
-}
-
-/* Navigation */
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(255,255,255,0.3);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-nav a {
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-  font-size: 1.1em;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: #ffd1dc;
-}
-
-/* Container */
-.container {
-  padding: 50px 20px;
-  color: white;
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
-
-/* Bubu Dudu Image */
-.bubu-dudu {
-  width: 300px;
-  margin: 20px 0;
-}
-
-/* Animated text with gradient */
-.animated-text {
-  font-size: 1.5em;
-  font-weight: bold;
-  background: linear-gradient(90deg, #ff758c, #ff7eb3, #ff758c);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientMove 3s ease infinite;
-  display: inline-block;
-}
-
-@keyframes gradientMove {
+@keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.animated-text span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s forwards;
+.App {
+  text-align: center;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* My Heart */
-.heart-word {
-  position: absolute;
-  font-size: 24px;
-  color: pink;
-  animation: floatUp linear infinite;
-}
-
-@keyframes floatUp {
-  0% { transform: translateY(100vh); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-100px); opacity: 0; }
-}
-
-/* Question Page popup */
-.popup-img {
+nav {
   position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  display: none;
-  z-index: 999;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 0;
+  z-index: 1000;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .animated-text { font-size: 1.2em; }
-  nav a { font-size: 0.9em; }
-  .bubu-dudu { width: 200px; }
-  }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ff6b6b;
+}
+
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.heart {
+  font-size: 2em;
+  color: #ff6b6b;
+  animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
