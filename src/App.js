@@ -1,12 +1,11 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-import HomePage from "./pages/HomePage";
-import MyLoveEnglish from "./pages/MyLoveEnglish";
-import MyLoveBangla from "./pages/MyLoveBangla";
-import MyLoveHindi from "./pages/MyLoveHindi";
-import MyHeart from "./pages/MyHeart";
-import AnswerQuestion from "./pages/AnswerQuestion";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import MyLoveEnglish from './pages/MyLoveEnglish';
+import MyLoveBangla from './pages/MyLoveBangla';
+import MyLoveHindi from './pages/MyLoveHindi';
+import MyHeart from './pages/MyHeart';
+import AnswerQuestion from './pages/AnswerQuestion';
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
           <Link to="/myheart">My Heart</Link>
           <Link to="/question">Answer My Question</Link>
         </nav>
-
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/english" element={<MyLoveEnglish />} />
