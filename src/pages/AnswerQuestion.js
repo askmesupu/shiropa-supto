@@ -1,63 +1,53 @@
 import React, { useState } from "react";
 
-const AnswerQuestion = () => {
-  const [yesPopup, setYesPopup] = useState(false);
-  const [noPos, setNoPos] = useState({ top: "50%", left: "50%" });
+export default function AnswerQuestion() {
+  const [answer, setAnswer] = useState(null);
+  const [noPos, setNoPos] = useState({ top: 0, left: 0 });
 
-  const handleYes = () => {
-    setYesPopup(true);
-    setTimeout(() => setYesPopup(false), 3000);
-  };
-
-  const handleNoHover = () => {
-    const top = Math.random() * 70 + "%";
-    const left = Math.random() * 70 + "%";
-    setNoPos({ top, left });
+  const moveNo = () => {
+    setNoPos({
+      top: Math.random() * 140 - 60 + "px",
+      left: Math.random() * 220 - 110 + "px",
+    });
   };
 
   return (
-    <div className="container" style={{ position: "relative", minHeight: "50vh" }}>
-      <h1>Will you stay forever with me?</h1>
-      <div style={{ marginTop: "30px", position: "relative", height: "150px" }}>
-        <button
-          onClick={handleYes}
-          style={{ padding: "10px 20px", fontSize: "1em", marginRight: "20px" }}
-        >
-          Yes
-          <img 
-            src="https://i.imgur.com/nXvrTyh.jpeg" 
-            alt="Happy Dudu" 
-            style={{ width: "30px", marginLeft: "5px" }} 
-          />
-        </button>
+    <section className="page">
+      <h2>Will you stay forever with me? 💍</h2>
 
-        <button
-          onMouseEnter={handleNoHover}
-          style={{
-            position: "absolute",
-            top: noPos.top,
-            left: noPos.left,
-            padding: "10px 20px",
-            fontSize: "1em",
-            cursor: "pointer",
-          }}
-        >
-          No
-          <img 
-            src="https://i.imgur.com/tpIx24B.png" 
-            alt="Crying Dudu" 
-            style={{ width: "30px", marginLeft: "5px" }} 
-          />
-        </button>
-      </div>
-
-      {yesPopup && (
-        <div>
-          <p style={{ fontSize: "1.5em", marginTop: "20px" }}>I love you baby ❤️</p>
+      <div className="question-area" style={{ position: "relative" }}>
+        <div style={{ zIndex: 2 }}>
+          <button className="action" onClick={() => setAnswer("yes")}>Yes</button>
         </div>
-      )}
-    </div>
-  );
-};
 
-export default AnswerQuestion;
+        <div className="btn-row" aria-hidden="false">
+          <button
+            className="no-btn"
+            style={{ top: noPos.top, left: noPos.left }}
+            onMouseEnter={moveNo}
+            onClick={() => setAnswer("no")}
+            aria-label="No button"
+          >
+            No
+          </button>
+        </div>
+
+        {answer === "yes" && (
+          <div className="popup" role="status" aria-live="polite">
+            I love you baby ❤️
+            <div style={{ marginTop: 10 }}>
+              <img src="https://i.ibb.co/5FSp4Jb/dudu-happy.png" alt="Dudu happy" width="120"/>
+            </div>
+          </div>
+        )}
+
+        {answer === "no" && (
+          <div style={{ marginTop: 12 }}>
+            <img src="https://i.ibb.co/ZGrzV7p/dudu-cry.png" alt="Dudu crying" width="140"/>
+            <div style={{ color: "#fff", marginTop: 8, fontWeight:700 }}>Dudu is sad 😢</div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
