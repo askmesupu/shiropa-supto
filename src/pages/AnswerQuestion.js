@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const AnswerQuestion = () => {
   const [yesPopup, setYesPopup] = useState(false);
-  const [noPopup, setNoPopup] = useState(false);
   const [noPos, setNoPos] = useState({ top: "50%", left: "50%" });
 
   const handleYes = () => {
@@ -14,8 +13,6 @@ const AnswerQuestion = () => {
     const top = Math.random() * 70 + "%";
     const left = Math.random() * 70 + "%";
     setNoPos({ top, left });
-    setNoPopup(true);
-    setTimeout(() => setNoPopup(false), 2000);
   };
 
   return (
@@ -35,7 +32,8 @@ const AnswerQuestion = () => {
             top: noPos.top,
             left: noPos.left,
             padding: "10px 20px",
-            fontSize: "1em"
+            fontSize: "1em",
+            cursor: "pointer",
           }}
         >
           No
@@ -43,21 +41,9 @@ const AnswerQuestion = () => {
       </div>
 
       {yesPopup && (
-        <img
-          src="https://i.imgur.com/nXvrTyh.jpeg"
-          alt="Yes"
-          className="popup-img"
-          style={{ display: "block" }}
-        />
-      )}
-
-      {noPopup && (
-        <img
-          src="https://i.imgur.com/tpIx24B.png"
-          alt="No"
-          className="popup-img"
-          style={{ display: "block" }}
-        />
+        <div>
+          <p style={{ fontSize: "1.5em", marginTop: "20px" }}>I love you baby ❤️</p>
+        </div>
       )}
     </div>
   );
