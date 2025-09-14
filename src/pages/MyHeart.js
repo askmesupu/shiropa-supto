@@ -1,53 +1,49 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function MyHeart() {
-  const wrapRef = useRef();
+const MyHeart = () => {
+  const [words, setWords] = useState([]);
 
   useEffect(() => {
-    const container = wrapRef.current;
-    // create many floating words
-    const total = 50;
-    for (let i = 0; i < total; i++) {
-      const s = document.createElement("span");
-      s.className = "shiropa-word";
-      s.textContent = "Shiropa";
-      const left = Math.random() * 90;
-      const top = 60 + Math.random() * 200; // start lower
-      const size = 12 + Math.random() * 20;
-      s.style.left = left + "%";
-      s.style.top = top + "px";
-      s.style.fontSize = size + "px";
-      s.style.animationDuration = (6 + Math.random() * 6) + "s";
-      s.style.opacity = 0.85 - Math.random() * 0.3;
-      container.appendChild(s);
-      setTimeout(() => s.remove(), 14000); // cleanup after some time
+    let temp = [];
+    for (let i = 0; i < 100; i++) {
+      const left = Math.random() * 90 + "vw";
+      const top = Math.random() * 90 + "vh";
+      const duration = 5 + Math.random() * 5 + "s";
+      temp.push({ left, top, duration });
     }
-    // create continuous small waves
-    const interval = setInterval(() => {
-      const s = document.createElement("span");
-      s.className = "shiropa-word";
-      s.textContent = "Shiropa";
-      const left = Math.random() * 90;
-      const top = 320;
-      const size = 12 + Math.random() * 18;
-      s.style.left = left + "%";
-      s.style.top = top + "px";
-      s.style.fontSize = size + "px";
-      s.style.animationDuration = (6 + Math.random() * 6) + "s";
-      s.style.opacity = 0.9;
-      container.appendChild(s);
-      setTimeout(() => s.remove(), 12000);
-    }, 800);
-    return () => clearInterval(interval);
+    setWords(temp);
   }, []);
 
   return (
-    <section className="page" style={{ position: "relative", height: "520px", overflow: "hidden" }}>
-      <h2>My Heart</h2>
-      <div ref={wrapRef} style={{ position: "absolute", inset: 0 }} aria-hidden="true"></div>
-      <p style={{ position: "relative", zIndex: 2, marginTop: 260 }}>
-        My heart only says one name — Shiropa.
-      </p>
-    </section>
+    <div className="container" style={{ position: "relative", minHeight: "80vh" }}>
+      <h1>My Heart</h1>
+      {words.map((w, i) => (
+        <div
+          key={i}
+          className="heart-word"
+          style={{
+            position: "absolute",
+            left: w.left,
+            top: w.top,
+            color: "pink",
+            fontSize: "20px",
+            animation: `floatUp ${w.duration} linear infinite`,
+          }}
+        >
+          Shiropa
+        </div>
+      ))}
+      <style>
+        {`
+          @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+          }
+        `}
+      </style>
+    </div>
   );
-    }
+};
+
+export default MyHeart;
