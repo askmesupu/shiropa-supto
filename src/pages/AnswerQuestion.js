@@ -24,7 +24,13 @@ const AnswerQuestion = () => {
           style={{ padding: "10px 20px", fontSize: "1em", marginRight: "20px" }}
         >
           Yes
+          <img 
+            src="https://i.imgur.com/nXvrTyh.jpeg" 
+            alt="Happy Dudu" 
+            style={{ width: "30px", marginLeft: "5px" }} 
+          />
         </button>
+
         <button
           onMouseEnter={handleNoHover}
           style={{
@@ -37,6 +43,11 @@ const AnswerQuestion = () => {
           }}
         >
           No
+          <img 
+            src="https://i.imgur.com/tpIx24B.png" 
+            alt="Crying Dudu" 
+            style={{ width: "30px", marginLeft: "5px" }} 
+          />
         </button>
       </div>
 
