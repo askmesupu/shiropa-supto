@@ -1,0 +1,35 @@
+.homepage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+}
+
+.bg1, .bg2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top:0;
+  left:0;
+  z-index: -2;
+}
+
+.bg2 {
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  top: 20%;
+}
+
+.buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
