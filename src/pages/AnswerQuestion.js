@@ -36,14 +36,14 @@ export default function AnswerQuestion() {
           <div className="popup" role="status" aria-live="polite">
             I love you baby ❤️
             <div style={{ marginTop: 10 }}>
-              <img src="https://i.ibb.co/5FSp4Jb/dudu-happy.png" alt="Dudu happy" width="120"/>
+              <img src="https://i.imgur.com/nXvrTyh.jpeg" alt="Dudu happy" width="120"/>
             </div>
           </div>
         )}
 
         {answer === "no" && (
           <div style={{ marginTop: 12 }}>
-            <img src="https://i.ibb.co/ZGrzV7p/dudu-cry.png" alt="Dudu crying" width="140"/>
+            <img src="https://i.imgur.com/tpIx24B.png" alt="Dudu crying" width="140"/>
             <div style={{ color: "#fff", marginTop: 8, fontWeight:700 }}>Dudu is sad 😢</div>
           </div>
         )}
