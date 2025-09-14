@@ -1,33 +1,36 @@
 import React from "react";
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import MyLoveEnglish from "./pages/MyLoveEnglish";
-import MyLoveHindi from "./pages/MyLoveHindi";
-import MyLoveBangla from "./pages/MyLoveBangla";
-import MyHeart from "./pages/MyHeart";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AnswerQuestion from "./pages/AnswerQuestion";
-import "./App.css";
+import MyLoveEnglish from "./pages/MyLoveEnglish";
+import MyLoveBangla from "./pages/MyLoveBangla";
+import MyLoveHindi from "./pages/MyLoveHindi";
+import MyHeart from "./pages/MyHeart";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <nav className="nav-bar">
-          <Link to="/">Home</Link>
-          <Link to="/english">My Love (English)</Link>
-          <Link to="/hindi">My Love (Hindi)</Link>
-          <Link to="/bangla">My Love (Bangla)</Link>
-          <Link to="/myheart">My Heart</Link>
-          <Link to="/answer">Answer my Question</Link>
-        </nav>
-
+      <div
+        style={{
+          minHeight: "100vh",
+          width: "100%",
+          backgroundImage: `
+            url("https://i.imgur.com/8sdznQ1.jpeg"),
+            url("https://i.imgur.com/OGgciNc.png")
+          `,
+          backgroundSize: "cover, 200px",
+          backgroundPosition: "center, bottom right",
+          backgroundRepeat: "no-repeat, no-repeat",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/english" element={<MyLoveEnglish />} />
-          <Route path="/hindi" element={<MyLoveHindi />} />
-          <Route path="/bangla" element={<MyLoveBangla />} />
-          <Route path="/myheart" element={<MyHeart />} />
-          <Route path="/answer" element={<AnswerQuestion />} />
+          <Route path="/" element={<AnswerQuestion />} />
+          <Route path="/love-en" element={<MyLoveEnglish />} />
+          <Route path="/love-bn" element={<MyLoveBangla />} />
+          <Route path="/love-hi" element={<MyLoveHindi />} />
+          <Route path="/heart" element={<MyHeart />} />
         </Routes>
       </div>
     </Router>
