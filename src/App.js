@@ -1,35 +1,38 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import MyLoveEnglish from './pages/MyLoveEnglish';
-import MyLoveBangla from './pages/MyLoveBangla';
-import MyLoveHindi from './pages/MyLoveHindi';
-import MyHeart from './pages/MyHeart';
-import AnswerQuestion from './pages/AnswerQuestion';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import LoveEnglish from "./pages/LoveEnglish";
+import LoveBangla from "./pages/LoveBangla";
+import LoveHindi from "./pages/LoveHindi";
+import MyHeart from "./pages/MyHeart";
+import AnswerQuestion from "./pages/AnswerQuestion";
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <div className="App">
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/english">My Love (English)</Link>
-          <Link to="/bangla">My Love (Bangla)</Link>
-          <Link to="/hindi">My Love (Hindi)</Link>
-          <Link to="/myheart">My Heart</Link>
-          <Link to="/question">Answer My Question</Link>
-        </nav>
+    <div>
+      <header className="app-header">
+        <h1>Shiropa ❤️ Supto</h1>
+      </header>
+
+      <nav className="nav" aria-label="Main navigation">
+        <Link to="/">Home</Link>
+        <Link to="/english">My Love (English)</Link>
+        <Link to="/bangla">My Love (Bangla)</Link>
+        <Link to="/hindi">My Love (Hindi)</Link>
+        <Link to="/myheart">My Heart</Link>
+        <Link to="/question">Answer my question</Link>
+      </nav>
+
+      <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/english" element={<MyLoveEnglish />} />
-          <Route path="/bangla" element={<MyLoveBangla />} />
-          <Route path="/hindi" element={<MyLoveHindi />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/english" element={<LoveEnglish />} />
+          <Route path="/bangla" element={<LoveBangla />} />
+          <Route path="/hindi" element={<LoveHindi />} />
           <Route path="/myheart" element={<MyHeart />} />
           <Route path="/question" element={<AnswerQuestion />} />
         </Routes>
-      </div>
-    </Router>
+      </main>
+    </div>
   );
 }
-
-export default App;
